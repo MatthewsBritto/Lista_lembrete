@@ -1,4 +1,3 @@
-const add = document.getElementById('add')//temp
 
 const getDados = () =>JSON.parse(localStorage.getItem('lista')) ?? [];
 //o JSON transforma a lista em string
@@ -59,10 +58,17 @@ const clickitem = (event) => {
         removeritem(indice)
     }
 }
+const add_click = (event) => {
+    const dados = getDados();
+    const txt = document.getElementById("nova_tarefa");
+    dados.push({'tarefa': txt.value});
+    setDados(dados);
+    att_tela()
+}
 
-//temp
-document.getElementById("nova_tarefa").addEventListener("keypress", nova_tarefa)
-document.getElementById("lista").addEventListener('click', clickitem)
+document.getElementById("nova_tarefa").addEventListener("keypress", nova_tarefa);
+document.getElementById("lista").addEventListener('click', clickitem);
+document.getElementById("add").addEventListener('click',add_click);
 
 att_tela();
 
